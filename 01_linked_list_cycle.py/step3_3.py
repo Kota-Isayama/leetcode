@@ -20,4 +20,4 @@ class Solution:
             checked_nodes.add(next_node)
             last_checked_node = next_node
 
-        return True
+        return False

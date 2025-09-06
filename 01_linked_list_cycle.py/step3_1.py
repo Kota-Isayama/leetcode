@@ -24,4 +24,4 @@ class Solution:
             visited_nodes.add(next_node)
             current_node = next_node
 
-        return True
+        return False
