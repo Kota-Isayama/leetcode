@@ -10,24 +10,21 @@ class ListNode:
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        faster = head
-        slower = head
+        faster_node = head
+        slower_node = head
 
         while True:
-            if faster is None or faster.next is None:
+            if faster_node is None or faster_node.next is None:
                 return None
-
-            faster = faster.next.next
-            slower = slower.next
-
-            if faster is slower:
+            faster_node = faster_node.next.next
+            slower_node = slower_node.next
+            if faster_node is slower_node:
                 break
 
-        predecessor = faster
-        successor = head
+        leading_node = faster_node
+        following_node = head
+        while leading_node is not following_node:
+            leading_node = leading_node.next
+            following_node = following_node.next
 
-        while predecessor is not successor:
-            predecessor = predecessor.next
-            successor = successor.next
-
-        return predecessor
+        return leading_node
