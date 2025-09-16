@@ -19,11 +19,11 @@ class ListNode:
 
 class Solution:
     def deleteDuplicatesInPlace(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        node = head
+        node = head  # 無駄に変数を定義しすぎない
+
         while node is not None:
             while node.next is not None and node.val == node.next.val:
                 node.next = node.next.next
-
             node = node.next
 
         return head
@@ -34,7 +34,7 @@ class Solution:
 
         begin = head
         while begin is not None:
-            end = self.__get_next_distinct_value_node(begin)
+            end = self.__get_next_distinct_value_node(begin)  # より関数の事実に即した名前
             if end is not None:
                 deduplicated_list_tail.next = ListNode(end.val)
                 deduplicated_list_tail = deduplicated_list_tail.next
@@ -43,7 +43,7 @@ class Solution:
 
         return deduplicated_list_head
 
-    def __get_next_distinct_value_node(self, node: ListNode) -> Optional[ListNode]:
+    def __get_next_distinct_value_node(self, node: Optional[ListNode]) -> Optional[ListNode]:
         while node.next is not None and node.val == node.next.val:
             node = node.next
 
